@@ -15,16 +15,16 @@ void print_to_98(int n)
 		int tens = (i / 10) % 10;
 
 		if (tens > 0)
-			putchar(tens + '0');
+			_putchar(tens + '0');
 
-		putchar(ones + '0');
+		_putchar(ones + '0');
 
 		if (i < 98)
 		{
-			putchar(',');
-			putchar(' ');
+			_putchar(',');
+			_putchar(' ');
 		}
 	}
 
-	putchar('\n');
+	_putchar('\n');
 }
