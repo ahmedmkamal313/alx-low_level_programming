@@ -13,10 +13,10 @@ int main(void)
 
 /**
  *  print_alphabet - print the alphabet, in lowercase.
- *  Return: 0
+ *  Return: void
  */
 
-int print_alphabet(void)
+void print_alphabet(void)
 {
 	int alph;
 
