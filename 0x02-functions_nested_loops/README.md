@@ -8,4 +8,6 @@ main.h: header file containing prototypes for all functions written in the proje
 
 3-islower.c: function that checks for lowercase character.
 
-4-isalpha.c : function that checks for alphabetic character.
+4-isalpha.c: function that checks for alphabetic character.
+
+5-sign.c: unction that prints the sign of a number.
