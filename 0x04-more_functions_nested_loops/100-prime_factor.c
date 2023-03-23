@@ -23,7 +23,6 @@ int main(void)
 			if (n == 1)
 			{
 				printf("%ld", maxFact);
-				long int ans = 1;
 				break;
 			}
 		}
