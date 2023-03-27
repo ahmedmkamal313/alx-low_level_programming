@@ -4,21 +4,53 @@
 
 /**
  * main - generates random valid passwords for the program 101-crackme.
- * Return: 0.
+ * Return: 0
  */
 
-int main()
+int main(void)
 {
-	int i;
-	char password[10];
+	int i = 0;
+	int randomizer = 0;
+	int n;
 
-	srand(time(NULL));
+	srand((unsigned int)(time(NULL)));
 
-	for (i = 0; i < 10; i++)
+	char numbers[] = "0123456789";
+	char letter[] = "abcdefghijklmnoqprstuvwyzx";
+	char LETTER[] = "ABCDEFGHIJKLMNOQPRSTUYWVZX";
+	char symbols[] = "!@#$^&*?";
+	char password[n];
+
+	randomizer = rand() % 4;
+
+	for (i = 0; i < N; i++) 
 	{
-		password[i] = rand() % 26 + 'a';
+		if (randomizer == 1)
+		{
+			password[i] = numbers[rand() % 10];
+			randomizer = rand() % 4;
+			printf("%c", password[i]);
+		}
+		else if (randomizer == 2)
+		{
+			password[i] = symbols[rand() % 8];
+			randomizer = rand() % 4;
+			printf("%c", password[i]);
+		}
+		else if (randomizer == 3)
+		{
+			password[i] = LETTER[rand() % 26];
+			randomizer = rand() % 4;
+			printf("%c", password[i]);
+		}
+		else
+		{
+			password[i] = letter[rand() % 26];
+			randomizer = rand() % 4;
+			printf("%c", password[i]);
+		}
+
 	}
-	password[10] = '\0';
-	printf("%s\n", password);
+
 	return (0);
 }
