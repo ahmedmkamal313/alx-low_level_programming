@@ -15,7 +15,7 @@ int main(void)
 
 	srand(time(NULL));
 
-	for (i = 0 ; i <= 10 ; i++)
+	for (i = 0 ; i < 11 ; i++)
 	{
 		key[i] = (rand() % 94) + 33;
 	}
