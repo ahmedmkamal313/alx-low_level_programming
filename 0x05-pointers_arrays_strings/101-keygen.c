@@ -15,12 +15,12 @@ int main(void)
 
 	srand(time(NULL));
 
-	for (i = 0 ; i < 10 ; i++)
+	for (i = 0 ; i <= 10 ; i++)
 	{
 		key[i] = (rand() % 94) + 33;
 	}
 
-	key[10] = '\0';
+	key[9] = '\0';
 	printf("%s\n", key);
 
 	return (0);
