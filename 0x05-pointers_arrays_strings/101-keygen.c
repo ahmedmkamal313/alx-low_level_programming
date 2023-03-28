@@ -18,7 +18,7 @@ int main(void)
 	while (j < 2772)
 	{
 		password[i] = 33 + rand() % 94;
-		j += passowrd[i++];
+		j += password[i++];
 	}
 	
 	password[i] = '\0';
@@ -30,7 +30,7 @@ int main(void)
 
 		if ((j - 2772) % 2 != 0)
 		{
-			first++
+			first++;
 		}
 		for (i = 0 ; password[i] ; i++)
 		{
@@ -50,7 +50,7 @@ int main(void)
 		}
 	}
 
-	print("%s", password);
+	printf("%s", password);
 	return (0);
 }
 					
