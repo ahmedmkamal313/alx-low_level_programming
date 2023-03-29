@@ -17,7 +17,7 @@ char *rot13(char *s)
 		{
 			*s = (*s - rot + 13) % 26 + rot;
 		}
-		s++
+		s++;
 	}
 
 	return (r);
