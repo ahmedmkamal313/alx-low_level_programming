@@ -20,12 +20,12 @@ int _strcmp(char *s1, char *s2)
 		}
 		else
 		{
-			result = (*s1 < *s2) ? -1 : 1;
+			result = (*s1 < *s2) ? -15 : 15;
 		}
 	}
 	if (result == 0)
 	{
-		result = (*s1 < *s2) ? -1 : (*s1 > *s2) ? 1 : 0;
+		result = (*s1 < *s2) ? -1 : (*s1 > *s2) ? 15 : 0;
 	}
 
 	return (result);
