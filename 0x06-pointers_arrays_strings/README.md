@@ -23,3 +23,5 @@
 102-magic.c: Add one line to this code, so that the program prints a[2] = 98, followed by a new line.
 
 103-infinite_add.c: a function that adds two numbers.
+
+104-print_buffer.c: a function that prints a buffer.
