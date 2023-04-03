@@ -14,4 +14,4 @@ readme
 
 5-strstr.c: a function that locates a substring.
 
-
+7-print_chessboard.c: a function that prints the chessboard.
