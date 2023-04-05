@@ -13,3 +13,5 @@
 5-sqrt_recursion.c: a function that returns the natural square root of a number.
 
 6-is_prime_number.c: a function that returns 1 if the input integer is a prime number, otherwise return 0.
+
+100-is_palindrome.c:  a function that returns 1 if a string is a palindrome and 0 if not.
