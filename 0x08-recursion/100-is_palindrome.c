@@ -6,14 +6,14 @@ int is_palindrome_helper(char *s, int i, int j);
 /**
  * is_palindrome -  returns 1 if a string is a palindrome and 0 if not.
  * @s: the string to be checked
- * return: 1 and 0.
+ * Return: 1 and 0.
  */
 
 int is_palindrome(char *s)
 {
-	 if (strlen(s) <= 1)
-		 return (1);
-	 return (is_palindrome_helper(s, 0, strlen(s) - 1));
+	if (strlen(s) <= 1)
+		return (1);
+	return (is_palindrome_helper(s, 0, strlen(s) - 1));
 }
 
 /**
@@ -26,10 +26,10 @@ int is_palindrome(char *s)
 
 int is_palindrome_helper(char *s, int i, int j)
 {
-	 if (i >= j)
-		 return (1);
-	 if (s[i] != s[j])
-		 return 0;
+	if (i >= j)
+		return (1);
+	if (s[i] != s[j])
+		return (0);
 
-	  return (is_palindrome_helper(s, i + 1, j - 1));
+	return (is_palindrome_helper(s, i + 1, j - 1));
 }
