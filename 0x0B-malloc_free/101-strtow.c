@@ -3,6 +3,45 @@
 #include <string.h>
 
 /**
+ * is_space - helper function to check if a character is a space.
+ * @c: space
+ * Return: c.
+ */
+
+int is_space(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n');
+}
+
+/**
+ * count_words - helper function to count the number
+ * of words in a string.
+ * @str: string.
+ * Return: count.
+ */
+
+int count_words(char *str)
+{
+	int count = 0;
+	int i = 0;
+
+	while (str[i])
+	{
+		if (!is_space(str[i]))
+		{
+			count++;
+			while (str[i] && !is_space(str[i]))
+				i++;
+		}
+		else
+		{
+			i++;
+		}
+	}
+	return (count);
+}
+
+/**
  * strtow - splits a string into words.
  * @str: string to split.
  * Return: pointer to array of strings, NULL if failed.
@@ -10,42 +49,43 @@
 
 char **strtow(char *str)
 {
-	int i = 0, j = 0, k = 0;
-	size_t len;
 	char **words;
+	int i = 0, j = 0, k = 0, l;
+	int word_count = count_words(str);
 
-	if (str == NULL || *str == '\0')
+	if (!str || !*str || !word_count)
 		return (NULL);
-	len = strlen(str);
-	words = malloc(sizeof(char *) * (len + 1));
-	if (words == NULL)
+
+	words = malloc(sizeof(char *) * (word_count + 1));
+	if (!words)
 		return (NULL);
-	while (str[i] != '\0')
+
+	while (str[i])
 	{
-		while (str[i] == ' ')
+		if (!is_space(str[i]))
+		{
+			j = i;
+			while (str[j] && !is_space(str[j]))
+				j++;
+
+			words[k] = malloc(sizeof(char) * (j - i + 1));
+			if (!words[k])
+				return (NULL);
+
+			for (l = 0; l < j - i; l++)
+				words[k][l] = str[i + l];
+			words[k][j - i] = '\0';
+
+			k++;
+			i = j;
+		}
+		else
 		{
 			i++;
 		}
-		j = i;
-		while (str[j] != ' ' && str[j] != '\0')
-		{
-			j++;
-		}
-		words[k] = malloc(sizeof(char) * (j - i + 1));
-		if (words[k] == NULL)
-		{
-			for (i = 0; i < k; i++)
-			{
-				free(words[i]);
-			}
-			free(words);
-			return (NULL);
-		}
-		strncpy(words[k], &str[i], j - i);
-		words[k][j - i] = '\0';
-		k++;
-		i = j;
 	}
+
 	words[k] = NULL;
+
 	return (words);
 }
