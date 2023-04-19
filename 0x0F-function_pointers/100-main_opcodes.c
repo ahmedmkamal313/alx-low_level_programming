@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	int num_bytes, i;
-	int (*add)(in, char **) = main;
+	int (*add)(int, char **) = main;
 	unsigned char op;
 
 	if (argc != 2)
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	for (i = 0; i < num_bytes; i++)
 	{
 		op = *(unsigned char *)add;
-		printf("%02x", *(ptr + i));
+		printf("%02x", op);
 
 		if (i == num_bytes - 1)
 			continue;
