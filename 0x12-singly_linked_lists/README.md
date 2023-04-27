@@ -9,3 +9,5 @@
 3-add_node_end.c: a function that adds a new node at the end of a list_t list.
 
 4-free_list.c:  a function that frees a list_t list.
+
+100-first.c: a function that prints You're beat! and yet, you must allow,\nI bore my house upon my back!\n before the main function is executed.
