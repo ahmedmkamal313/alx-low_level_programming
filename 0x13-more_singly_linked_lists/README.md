@@ -8,3 +8,4 @@
 
 3-add_nodeint_end.c: a function that adds a new node at the end of a listint_t list.
 
+4-free_listint.c: a function that frees a listint_t list.
