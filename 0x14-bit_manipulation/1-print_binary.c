@@ -7,13 +7,25 @@
 
 void print_binary(unsigned long int n)
 {
-	if (n == 0)
+	unsigned long int mask = 1UL << (sizeof(n) * 8 - 1);
+	int flag = 0;
+
+	while (mask)
 	{
-		_putchar('0');
-		return;
+		if (n & mask)
+		{
+			_putchar('1');
+			flag = 1;
+		}
+		else if (flag)
+		{
+			_putchar('0');
+		}
+		mask >>= 1;
 	}
 
-	print_binary(n >> 1);
-
-	_putchar((n & 1) + '0');
+	if (flag == 0)
+	{
+		_putchar('0');
+	}
 }
