@@ -49,3 +49,8 @@
     - Prototype: `dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);`
     - where `index` is the index of the node, starting from `0`.
     - if the node does not exist, return `NULL`.
+
+**6-sum_dlistint.c:**
+  - a function that returns the sum of all the data (n) of a `dlistint_t` linked list.
+    - Prototype: `int sum_dlistint(dlistint_t *head);`
+    - if the list is empty, return `0`
