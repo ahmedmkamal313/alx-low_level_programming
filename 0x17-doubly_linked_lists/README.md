@@ -67,3 +67,18 @@
     - Prototype: `int delete_dnodeint_at_index(dlistint_t **head, unsigned int index);`
     - where `index` is the index of the node that should be deleted. Index starts at `0`.
     - Returns: `1` if it succeeded, `-1` if it failed.
+
+**100-password:**
+  - Find the password for [crackme4.](https://github.com/alx-tools/0x17.c)
+    - Save the password in the file 100-password.
+   
+**102-result:**
+  - A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+    - Find the largest palindrome made from the product of two 3-digit numbers.
+    - Save the result in the file 102-result.
+
+**103-keygen.c:**
+  - Usage of the crackme: ./crackme5 username key.
+  - The crackme will segfault if you do not enter the correct key for the user.
+  - Usage for your keygen: ./keygen5 username.
+  - Your keygen should print a valid key for the username.
