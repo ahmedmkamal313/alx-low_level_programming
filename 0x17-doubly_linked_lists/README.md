@@ -39,3 +39,13 @@
   - a function that adds a new node at the end of a `dlistint_t` list.
     - Prototype: `dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);`
     - Return: the address of the new element, or `NULL` if it failed.
+
+**4-free_dlistint.c:**
+  - a function that frees a `dlistint_t` list.
+    - Prototype: `void free_dlistint(dlistint_t *head);`.
+
+**5-get_dnodeint.c:**
+  - a function that returns the nth node of a `dlistint_t` linked list.
+    - Prototype: `dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);`
+    - where `index` is the index of the node, starting from `0`.
+    - if the node does not exist, return `NULL`.
