@@ -19,7 +19,7 @@
 ## List of files:
 
 **lists.h:**
-- A `header` file that defines and implements a doubly linked list of integers in `C`. It has a structure called `dlistint_t` that represents a list node with an integer value and pointers to the previous and next nodes. It also has several functions for `creating`, `printing`, `freeing`, `inserting`, `deleting`, and `manipulating` the list. It can be found at [insert your file path here].
+- A `header` file that defines and implements a doubly linked list of integers in `C`. It has a structure called `dlistint_t` that represents a list node with an integer value and pointers to the previous and next nodes. It also has several functions for `creating`, `printing`, `freeing`, `inserting`, `deleting`, and `manipulating` the list. It can be found at [lists.h](https://github.com/ahmedmkamal313/alx-low_level_programming/blob/master/0x17-doubly_linked_lists/lists.h).
 
 **0-print_dlistint.c:**
   - a function that prints all the elements of a `dlistint_t` list.
