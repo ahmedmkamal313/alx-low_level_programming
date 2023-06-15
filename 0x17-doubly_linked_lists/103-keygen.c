@@ -3,59 +3,51 @@
 #include <string.h>
 
 /**
- * keygen5 - generates a valid key for crackme5
- * @username: the username to generate a key for
- * Return: the key as a string
+ * main - Generates and prints passwords for the crackme5 executable.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
+ *
+ * Return: Always 0.
  */
-char *keygen5(char *username)
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-	int len = strlen(username); /* get the length of the username */
-	int sum = 0;
-	int i; /* declare a loop variable */
-	char *key = malloc(len + 1); /* allocate memory for the key */
+	char password[7], *codex;
+	int len = strlen(argv[1]), i, tmp;
 
-	if (key == NULL) /* check if memory allocation failed */
-		return (NULL); /* return NULL */
+	codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
 
-	for (i = 0; i < len; i++) /* loop through the username */
+	tmp = (len ^ 59) & 63;
+	password[0] = codex[tmp];
+
+	tmp = 0;
+	for (i = 0; i < len; i++)
+		tmp += argv[1][i];
+	password[1] = codex[(tmp ^ 79) & 63];
+
+	tmp = 1;
+	for (i = 0; i < len; i++)
+		tmp *= argv[1][i];
+	password[2] = codex[(tmp ^ 85) & 63];
+
+	tmp = 0;
+	for (i = 0; i < len; i++)
 	{
-		sum += username[i]; /* add the ASCII value of each character to the sum */
-		key[i] = username[i] ^ 0x4f;
+		if (argv[1][i] > tmp)
+			tmp = argv[1][i];
 	}
-	key[i] = sum & 0x3f;
-	key[i] += 'A'; /* add 'A' to convert it to an uppercase letter */
-	key[len] = '\0'; /* add a null terminator to the key */
+	srand(tmp ^ 14);
+	password[3] = codex[rand() & 63];
 
-	return (key); /* return the key */
-}
+	tmp = 0;
+	for (i = 0; i < len; i++)
+		tmp += (argv[1][i] * argv[1][i]);
+	password[4] = codex[(tmp ^ 239) & 63];
 
-/**
- * main - entry point for the keygen program
- * @argc: number of arguments
- * @argv: array of arguments
- * Return: 0 on success, 1 on error
- */
-int main(int argc, char **argv)
-{
-	char *key; /* declare a pointer to store the key */
+	for (i = 0; i < argv[1][0]; i++)
+		tmp = rand();
+	password[5] = codex[(tmp ^ 229) & 63];
 
-	if (argc != 2) /* check if the number of arguments is not 2 */
-	{
-		printf("Usage: %s username\n", argv[0]); /* print usage message */
-		return (1); /* exit with status 1 */
-	}
-
-	key = keygen5(argv[1]); /* generate a key for the given username */
-
-	if (key == NULL) /* check if key generation failed */
-	{
-		printf("Error: memory allocation failed\n"); /* print error message */
-		return (1); /* exit with status 1 */
-	}
-
-	printf("%s\n", key); /* print the key */
-
-	free(key); /* free the memory allocated for the key */
-
-	return (0); /* exit with status 0 */
+	password[6] = '\0';
+	printf("%s", password);
+	return (0);
 }
