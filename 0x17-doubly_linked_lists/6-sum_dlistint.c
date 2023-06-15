@@ -7,7 +7,7 @@
  */
 int sum_dlistint(dlistint_t *head)
 {
-	int = 0; /* declare a sum variable */
+	int sum = 0; /* declare a sum variable */
 
 	while (head != NULL) /* loop through the list until the end */
 	{
