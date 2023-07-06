@@ -117,7 +117,8 @@ typedef struct shash_table_s
   - a function that deletes a hash table.
   - This function uses **stdlib.h** library function to free the memory allocated for the hash table. It frees the key and value strings, the nodes, the array and the hash table struct. It also handles the case when ht is NULL.
 - **100-sorted_hash_table.c:**
-  ![what](http://www.smartinsights.com/wp-content/uploads/2017/09/email-marketing-testing-shocked.gif)
+  
+   ![what](http://www.smartinsights.com/wp-content/uploads/2017/09/email-marketing-testing-shocked.gif)
   - Prototypes:
       - `shash_table_t *shash_table_create(unsigned long int size);`
       - `int shash_table_set(shash_table_t *ht, const char *key, const char *value);`
