@@ -37,6 +37,91 @@ shash_table_t *shash_table_create(unsigned long int size)
 }
 
 /**
+ * create_node - Creates a new node with the key and value
+ * @key: The key
+ * @value: The value
+ * Return: A pointer to the new node, or NULL if something went wrong
+ */
+shash_node_t *create_node(const char *key, const char *value)
+{
+	shash_node_t *new;
+
+	/* Allocate memory for the new node */
+	new = malloc(sizeof(shash_node_t));
+	if (new == NULL)
+		return (NULL);
+
+	/* Duplicate the key and value strings */
+	new->key = strdup(key);
+	if (new->key == NULL)
+	{
+		free(new);
+		return (NULL);
+	}
+	new->value = strdup(value);
+	if (new->value == NULL)
+	{
+		free(new->key);
+		free(new);
+		return (NULL);
+	}
+
+	/* Initialize the next, sprev and snext fields to NULL */
+	new->next = NULL;
+	new->sprev = NULL;
+	new->snext = NULL;
+
+	return (new);
+}
+
+/**
+ * insert_node - Inserts a new node in the sorted linked list
+ * @ht: The hash table
+ * @new: The new node to insert
+ */
+void insert_node(shash_table_t *ht, shash_node_t *new)
+{
+	shash_node_t *current;
+
+	/* If the sorted list is empty, make new node the head and tail */
+	if (ht->shead == NULL)
+	{
+		ht->shead = new;
+		ht->stail = new;
+		return;
+	}
+
+	/* Find the position to insert the new node in ascending order of keys */
+	current = ht->shead;
+	while (current != NULL && strcmp(current->key, new->key) < 0)
+		current = current->snext;
+
+	/* If current is NULL, insert at the end of the list */
+	if (current == NULL)
+	{
+		new->sprev = ht->stail;
+		ht->stail->snext = new;
+		ht->stail = new;
+		return;
+	}
+
+	/* If current is the head, insert at the beginning of the list */
+	if (current == ht->shead)
+	{
+		new->snext = ht->shead;
+		ht->shead->sprev = new;
+		ht->shead = new;
+		return;
+	}
+
+	/* Otherwise, insert in between current and its previous node */
+	new->sprev = current->sprev;
+	new->snext = current;
+	current->sprev->snext = new;
+	current->sprev = new;
+}
+
+/**
  * shash_table_set - Adds an element to the sorted hash table
  * @ht: The hash table to add or update the key/value to
  * @key: The key
@@ -64,53 +149,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		}
 		current = current->next;
 	}
-	new = malloc(sizeof(shash_node_t));
+	new = create_node(key, value);
 	if (new == NULL)
 		return (0);
-	new->key = strdup(key);
-	if (new->key == NULL)
-	{
-		free(new);
-		return (0);
-	}
-	new->value = strdup(value);
-	if (new->value == NULL)
-	{
-		free(new->key);
-		free(new);
-		return (0);
-	}
 	new->next = ht->array[index];
 	ht->array[index] = new;
-	new->sprev = NULL;
-	new->snext = NULL;
-	if (ht->shead == NULL)
-	{
-		ht->shead = new;
-		ht->stail = new;
-		return (1);
-	}
-	current = ht->shead;
-	while (current != NULL && strcmp(current->key, key) < 0)
-		current = current->snext;
-	if (current == NULL)
-	{
-		new->sprev = ht->stail;
-		ht->stail->snext = new;
-		ht->stail = new;
-		return (1);
-	}
-	if (current == ht->shead)
-	{
-		new->snext = ht->shead;
-		ht->shead->sprev = new;
-		ht->shead = new;
-		return (1);
-	}
-	new->sprev = current->sprev;
-	new->snext = current;
-	current->sprev->snext = new;
-	current->sprev = new;
+	insert_node(ht, new);
 	return (1);
 }
 
