@@ -32,7 +32,7 @@ int exponential_search(int *array, size_t size, int value)
 }
 
 /**
- * binary_search - Searches for a value in a sorted array of integers using the
+ * bin_search - Searches for a value in a sorted array of integers using the
  * Binary search algorithm
  * @array: Pointer to the first element of the array to search in
  * @low: The lower bound of the subarray to search in
